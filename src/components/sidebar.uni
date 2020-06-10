@@ -1,0 +1,40 @@
+<template>
+  <div>
+    <ul class="list-group sidebar">
+      {
+        this.state = {
+          select: 0
+        };
+
+        function onChildClick(event){
+          var child = event.srcElement;
+          this.setState({
+            select: child.getAttribute("select")
+          });
+          $("."+child.getAttribute("info"))[0].scrollIntoView({
+            behavior: "smooth"
+          });
+        }
+
+        this.onFullLoad = () => {
+          for (var i = 0; i < this.children.length; i++){
+            var child = this.children[i];
+            child.setAttribute("select", i);
+            child.onclick = onChildClick.bind(this)
+          };
+        };
+
+        this.bindState(newState => {
+          var old = this.state.select;
+          this.children[old].classList.remove("active");
+          this.children[newState.select].classList.add("active");
+        });
+      }
+      <li class="list-group-item active" info="info-setup">Setup</li>
+      <li class="list-group-item" info="info-scripting">In-line Scripting</li>
+      <li class="list-group-item" info="info-init">Initializaiton Events</li>
+      <li class="list-group-item" info="info-component">Components</li>
+      <li class="list-group-item" info="info-state">State Management</li>
+    </ul>
+  </div>
+</template>

@@ -1,0 +1,103 @@
+<template>
+  <div class="info-section info-state jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">State Management</h1>
+      <p class="lead">Uni respects the DOM tree's hierarchy when processing state management</p>
+      <p>Declaring an initial state must be done on <b>this.state:</b></p>
+      <pre>
+        <code class="javascript html">
+{
+$(this).text(`&lt;div&gt;
+  {
+    this.state = {foo: 2}
+  }
+&lt;/div&gt;`);
+}
+        </code>
+      </pre>
+      <h2>bindState(callback)</h2>
+      <pre>
+        <code class="javascript html">
+{
+$(this).text(`&lt;div&gt;
+  {
+    this.state = {foo: 2}
+    this.bindState(newState => {
+      console.log("foo is " + newState.foo);
+    });
+  }
+  ...
+&lt;/div&gt;`);
+}
+        </code>
+      </pre>
+      <p>The callback passed to bindState will be called once initially then upon any state changes from setState thereafter.</p>
+      <h2>setState(object)</h2>
+      <pre>
+        <code class="javascript html">
+{
+$(this).text(`&lt;div&gt;
+  {
+    this.state = {foo: 2}
+    this.bindState(newState => {
+      console.log("foo is " + newState.foo);
+    });
+    this.setState({foo: 3});
+  }
+  ...
+&lt;/div&gt;`);
+}
+        </code>
+      </pre>
+      <p>The callback passed to bindState will be called once initially then upon any state changes from setState.</p>
+      <h3>State methods within descendants</h3>
+      <p>Descendants that have a parent with a defined initial state can use these methods as well:</p>
+      <pre>
+        <code class="javascript html">
+{
+$(this).text(`&lt;div&gt;
+  {
+    this.state = {foo: 2}
+    this.bindState(newState => {
+      console.log("foo is " + newState.foo);
+    });
+  }
+  &lt;div id="child"&gt;
+    {
+      this.setState({foo: 3})
+    }
+  &lt;/div&gt;
+&lt;/div&gt;`);
+}
+        </code>
+      </pre>
+      <p>Descendants can setState to multiple ancestors with differing state attributes:</p>
+      <pre>
+        <code class="javascript html">
+{
+$(this).text(`&lt;div id="ancestor"&gt;
+  {
+    this.state = {foo: 2}
+    this.bindState(newState => {
+      console.log("foo is " + newState.foo);
+    });
+  }
+  &lt;div id="child"&gt;
+    {
+      this.state = {bar: 3}
+      this.bindState(newState => {
+        console.log("bar is " + newState.bar);
+      }); 
+    }
+    &lt;div id="descendant"&gt;
+      {
+        this.setState({foo: 3, bar: 4});
+      }
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;`);
+}
+        </code>
+      </pre>
+    </div>
+</template>

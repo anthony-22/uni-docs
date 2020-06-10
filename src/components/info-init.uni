@@ -1,0 +1,42 @@
+<template>
+  <div class="info-section info-init jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Initialization Events</h1>
+      <p class="lead">Uni runs scripts in the order of an execution tree</p>
+      <p>Every DOM element runs itself first then recurses on its children.</p>
+      <p>The following are events that can be assigned upon initialization:</p>
+      <h2>onFullLoad</h2>
+      <pre>
+        <code class="javascript html">
+{
+$(this).text(`&lt;div&gt;
+  {
+    this.onFullLoad = () => {
+      // called after every descendant has loaded
+    }
+  }
+  ...
+&lt;/div&gt;`);
+}
+        </code>
+      </pre>
+      <p>Assigning a callback to onFullLoad will call it once every descendent's script is ran.</p>
+      <h2>onChildLoad</h2>
+      <pre>
+        <code class="javascript html">
+{
+$(this).text(`&lt;div&gt;
+  {
+    this.onChildLoad = (child) => {
+      console.log(child + " has loaded");
+      // called when a descendant loads
+    }
+  }
+  ...
+&lt;/div&gt;`);
+}
+        </code>
+      </pre>
+      <p>Assigning a callback to onChildLoad will call it everytime a descendant's script is ran passing the descendant itself.</p>
+    </div>
+</template>

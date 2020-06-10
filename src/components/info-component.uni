@@ -1,0 +1,52 @@
+<template>
+  <div class="info-section info-component jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Components</h1>
+      <p class="lead">Uni allows for splitting your views into components</p>
+      <p>Component files are automatically registered in the directory <b>src/components</b>.<br/>The file name must be the desired component name. (In this case it's navbar.uni)</p>
+      <pre>
+        <code class="javascript html">
+{
+$(this).text(`&lt;template&gt;
+  &lt;div class=&quot;navbar&quot;&gt;
+    {
+      // blah
+    }
+    ...
+  &lt;/div&gt;
+&lt;/template&gt;`);
+}
+        </code>
+      </pre>
+      <p>To use a component <b>this.imports must be declared with its name inside the parent element.</b></p>
+      <p>You can then declare a regular HTML element with its tagname:</p>
+      <pre>
+        <code class="javascript html">
+{
+$(this).text(`&lt;body&gt;
+  {
+    this.imports = [&quot;navbar&quot;];
+  }
+  &lt;navbar&gt;&lt;/navbar&gt;
+&lt;/body&gt;`);
+}
+        </code>
+      </pre>
+      <p>Components can be added dynamically with <b>this.addComponent(name)</b>:</p>
+      <h2>addComponent(name)</h2>
+      <pre>
+        <code class="javascript html">
+{
+$(this).text(`&lt;body&gt;
+  {
+    this.imports = [&quot;navbar&quot;];
+    this.addComponent("navbar");
+  }
+&lt;/body&gt;`);
+}
+        </code>
+      </pre>
+      <p><b>addComponent</b> appends a new component as a child into the script context.</p>
+    </div>
+  </div>
+</template>

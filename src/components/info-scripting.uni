@@ -1,0 +1,37 @@
+<template>
+  <div class="info-section info-scripting jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">In-line Scripting</h1>
+      <p class="lead">Using Uni you can write inline-scripts that run with under a DOM element as context:</p>
+      <p>Note: Uni assigns the method <b>find</b> as an alias for <b>querySelector</b></p>
+      <pre>
+        <code class="javascript html">
+{
+$(this).text(`&lt;div&gt;
+  {
+    this.find(&quot;#foo&quot;).innerText += &quot;Polo!&quot;;
+  }
+  &lt;span id=&quot;foo&quot;&gt;Marco&lt;/span&gt;
+&lt;/div&gt;`);
+}
+        </code>
+      </pre>
+      <p>You also can traverse the DOM and read / modify other elements:</p>
+      <pre>
+        <code class="javascript html">
+{
+$(this).text(`&lt;div id=&quot;parent&quot;&gt;
+  {
+    console.log(this.children[0].innerText);
+    // prints 'Foo'
+  }
+  &lt;div id=&quot;child&quot;&gt;
+    Foo
+  &lt;/div&gt;
+&lt;/div&gt;`);
+}
+        </code>
+      </pre>
+    </div>
+  </div>
+</template>

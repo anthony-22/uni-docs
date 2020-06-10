@@ -1,0 +1,16 @@
+<template>
+  <div class="info-container">
+    {
+      this.imports = ["info-setup", 
+                      "info-scripting", 
+                      "info-init", 
+                      "info-component",
+                      "info-state"]
+    }
+    <info-setup></info-setup>
+    <info-scripting></info-scripting>
+    <info-init></info-init>
+    <info-component></info-component>
+    <info-state></info-state>
+  </div>
+</template>

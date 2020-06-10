@@ -1,0 +1,19 @@
+<template>
+    <div class="info-section info-setup jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Setup</h1>
+            <p class="lead">Uni is available to install as an npm package:</p>
+            <pre>
+          <code class="language-bash">npm install -g uni-cmd</code>
+        </pre>
+            <p>A new project can then be created with the <b>init</b> command:</p>
+            <pre>
+          <code class="language-bash">uni init Project_Name</code>
+        </pre>
+            <p>Inside a project directory, a dev environment with hot reload can be started:</p>
+            <pre>
+          <code class="language-bash">npm run dev</code>
+        </pre>
+        </div>
+    </div>
+</template>
