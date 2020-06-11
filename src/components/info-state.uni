@@ -51,7 +51,7 @@ $(this).text(`&lt;div&gt;
       </pre>
       <p>The callback passed to bindState will be called once initially then upon any state changes from setState.</p>
       <h3>State methods within descendants</h3>
-      <p>Descendants that have a parent with a defined initial state can use these methods as well:</p>
+      <p>Descendants that have ancestor(s) with a defined initial state(s) can use these methods:</p>
       <pre>
         <code class="javascript html">
 {
