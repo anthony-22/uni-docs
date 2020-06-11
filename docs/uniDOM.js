@@ -4,7 +4,7 @@ var uni;
     const TOK_START_JS = "{";
     const TOK_START_CSS = "{";
     const TOK_END = "}";
-    const TOKENS = [TOK_START_JS, TOK_START_CSS, TOK_END]
+    const TOKENS = [TOK_START_JS, TOK_START_CSS, TOK_END];
     const IGNORE_INTERPRET = ["SCRIPT", "LINK", "HTML", "HEAD", "LINK", "IFRAME", "TITLE"];
     const SCAN_JS = 0;
     const SCAN_CSS = 1;
@@ -29,14 +29,14 @@ var uni;
         },
         addComponent: async(name, parent, props) => {
             var componentHTML = await uni.getComponentHTML(parent, name);
-            let numChildOld = parent.children.length;
+            var numChildOld = parent.children.length;
             var component = document.createElement('DIV');
             component.innerHTML = componentHTML;
-            for (var i = 0; i < component.children.length; i++) {
+            for (let i = 0; i < component.children.length; i++) {
                 parent.appendChild(component.children[i]);
             }
             var children = parent.children;
-            for (var i = numChildOld; i < children.length; i++) {
+            for (let i = numChildOld; i < children.length; i++) {
                 if (!children[i]._didInit) {
                     await evalElement(children[i], props)
                 }
