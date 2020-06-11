@@ -16,7 +16,7 @@ $(this).text(`&lt;div&gt;
 }
         </code>
       </pre>
-      <p>You also can traverse the DOM and read / modify other elements:</p>
+      <p>You also can traverse the DOM to read / modify other elements:</p>
       <pre>
         <code class="javascript html">
 {
