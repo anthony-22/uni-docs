@@ -1,0 +1,48 @@
+<template>
+  <div class="info-section info-props jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Props</h1>
+      <p class="lead">Data known as <b>props</b> can be passed to reusable components upon initialization.</p>
+      <p>For components initialized statically, props can be given through regular html attribute:</p>
+      <pre>
+        <code class="javascript html">
+{
+$(this).text(`&lt;body&gt;
+  {
+    this.imports = [&quot;navbar&quot;];
+  }
+  &lt;navbar title="foo"&gt;&lt;/navbar&gt;
+&lt;/body&gt;`);
+}
+        </code>
+      </pre>
+      <p>For components initialized dynamically, props can be given as an object through <b>addComponent</b>'s second optional parameter.</p>
+      <pre>
+        <code class="javascript html">
+{
+$(this).text(`&lt;body&gt;
+  {
+    this.imports = [&quot;navbar&quot;];
+    this.addComponent("navbar", {title: "foo"});
+  }
+&lt;/body&gt;`);
+}
+        </code>
+      </pre>    
+      <p>And finally, accessing props from the component end is done with <b>this.props</b>:</p>
+      <pre>
+        <code class="javascript html">
+{
+$(this).text(`&lt;template&gt;
+  &lt;div class=&quot;navbar&quot;&gt;
+    {
+      console.log(&quot;My title:&quot;, this.props.title);
+    }
+  &lt;/div&gt;
+&lt;/template&gt;`);
+}
+        </code>
+      </pre> 
+    </div>
+  </div>
+</template>

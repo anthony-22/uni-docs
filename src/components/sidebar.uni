@@ -34,6 +34,7 @@
       <li class="list-group-item" info="info-scripting">In-line Scripting</li>
       <li class="list-group-item" info="info-init">Initializaiton Events</li>
       <li class="list-group-item" info="info-component">Components</li>
+      <li class="list-group-item" info="info-props">Props</li>
       <li class="list-group-item" info="info-state">State Management</li>
     </ul>
   </div>

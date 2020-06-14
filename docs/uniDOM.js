@@ -11,11 +11,13 @@ var uni;
     const parser = new DOMParser();
     uni = {
         getComponentHTML: async(target, name) => {
+
             var existingImport = uni._rawComponents && uni._rawComponents[name];
             var response;
             if (existingImport) {
                 response = existingImport;
             } else {
+                console.log("getComHTML", [name, uni._rawComponents])
                 var path = `/components/${name}.uni`;
                 response = await fetch(path);
                 if (!response.ok) {
@@ -66,6 +68,17 @@ var uni;
         return new Proxy(target, handler);
     }
 
+    function getProps(target) {
+        var props = {};
+        var nameList = target.getAttributeNames();
+        for (let i = 0; i < nameList.length; i++) {
+            let name = nameList[i];
+            props[name] = target.getAttribute(name);
+        }
+
+        return props;
+    }
+
     // called on startup to load all components referenced from custom alias elements
     async function registerComponent(target, name) {
         var componentHTML = await uni.getComponentHTML(target, name);
@@ -74,7 +87,10 @@ var uni;
         for (var i = 0; i < target.childNodes.length; i++) {
             var el = target.childNodes[i];
             if (el.tagName == name.toUpperCase()) {
+                let props = getProps(el);
                 el.outerHTML = componentHTML;
+                el = target.childNodes[i];
+                evalElement(el, props);
             }
 
         }
@@ -205,7 +221,7 @@ var uni;
             if (IGNORE_INTERPRET.indexOf(child.tagName) == -1) {
                 try {
                     if (!child._didInit) {
-                        evalElement(child);
+                        evalElement(child, props);
                     }
                 } catch (e) {
                     console.error(e);

@@ -33,7 +33,7 @@ $(this).text(`&lt;body&gt;
         </code>
       </pre>
       <p>Components can be added dynamically with <b>this.addComponent(name)</b>:</p>
-      <h2>addComponent(name)</h2>
+      <h2>addComponent(name, Optional[props])</h2>
       <pre>
         <code class="javascript html">
 {
