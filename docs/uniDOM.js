@@ -17,7 +17,6 @@ var uni;
             if (existingImport) {
                 response = existingImport;
             } else {
-                console.log("getComHTML", [name, uni._rawComponents])
                 var path = `/components/${name}.uni`;
                 response = await fetch(path);
                 if (!response.ok) {
@@ -45,28 +44,8 @@ var uni;
             }
         },
         _evalElement: evalElement,
-        _ignore_interpret: IGNORE_INTERPRET,
-        _getWrapContext: getWrapContext
+        _ignore_interpret: IGNORE_INTERPRET
     };
-
-    function getWrapContext(target) {
-        // TODO: wrapper
-        return target;
-        const handler = {
-            set: function(obj, prop, value) {
-                if (typeof obj[prop] == "undefined") {
-                    this[prop] = value;
-                } else {
-                    obj[prop] = prop;
-                }
-            },
-            get: function(obj, prop) {
-                return obj[prop] || this[prop];
-            }
-        };
-
-        return new Proxy(target, handler);
-    }
 
     function getProps(target) {
         var props = {};
@@ -107,7 +86,6 @@ var uni;
         target.props = props;
         var _cl = Function(` 
             this.addComponent = (name, props = {}) => uni.addComponent(name, this, props);
-            this._rawImports = {}
             this._stateChangeListens = [];
             this.find = this.querySelector;
             this.bindState = function (cb){
@@ -157,7 +135,7 @@ var uni;
                 imports: typeof this.imports === 'object' ? this.imports : null
             };
         `);
-        var _context = getWrapContext(target)
+        var _context = target
         var evaluated = _cl.call(_context);
         if (evaluated.imports) {
             var imports = evaluated.imports;
@@ -235,6 +213,4 @@ var uni;
             interpreted.onFullLoad();
         }
     }
-
-    evalElement(document.body);
 })()

@@ -8,7 +8,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "dev": "concurrently --kill-others \"uni build && live-server --WATCH=/build --mount=/:%cd%/build --wait=200 --no-css-inject\" \"uni watch\"",
+    "dev": "concurrently --kill-others \"uni build && live-server --WATCH=/build --mount=/:%cd%/build --wait=100 --no-css-inject\" \"uni watch\"",
     "prod": "webpack --mode=production"
   },
   "author": "",

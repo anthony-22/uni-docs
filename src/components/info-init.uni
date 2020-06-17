@@ -37,6 +37,6 @@ $(this).text(`&lt;div&gt;
 }
         </code>
       </pre>
-      <p>Assigning a callback to onChildLoad will call it everytime a descendant's script is ran passing the descendant itself.</p>
+      <p>Assigning a callback to onChildLoad will call it everytime a child's script is ran passing the child itself.</p>
     </div>
 </template>
