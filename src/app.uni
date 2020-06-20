@@ -11,7 +11,10 @@
 </head>
 
 <body>
-    { this.imports = ["navbar", "sidebar", "info-container"]; }
+    {
+        console.log(this.tagName, "loaded."); 
+        this.imports = ["navbar", "sidebar", "info-container"]; 
+    }
 
     <info-container></info-container>
     <navbar></navbar>

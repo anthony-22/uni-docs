@@ -9,7 +9,7 @@
 {
 $(this).text(`&lt;div&gt;
   {
-    this.find(&quot;#foo&quot;).innerText += &quot;Polo!&quot;;
+    this.children[0].innerText += &quot;Polo!&quot;;
   }
   &lt;span id=&quot;foo&quot;&gt;Marco&lt;/span&gt;
 &lt;/div&gt;`);
