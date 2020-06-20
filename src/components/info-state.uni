@@ -2,7 +2,6 @@
   <div class="info-section info-state jumbotron jumbotron-fluid">
     <div class="container">
       <h1 class="display-4">State Management</h1>
-      <p class="lead">Uni respects the DOM tree's hierarchy when processing state management</p>
       <p>Declaring an initial state must be done on <b>this.state:</b></p>
       <pre>
         <code class="javascript html">
